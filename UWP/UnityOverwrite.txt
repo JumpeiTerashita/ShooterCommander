@@ -7,10 +7,10 @@
 # Default behavior is to never overwrite files
 project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 ShooterCommander.sln: 0FC82D4D1FC581715B59474A762DB742
-ShooterCommander\App.cs: 30947F02CDD924BC812A2DDFFAF79A87
-ShooterCommander\Package.appxmanifest: 375AA157ECC5C3701716FD8C432D2A37
+ShooterCommander\App.cs: modified
+ShooterCommander\Package.appxmanifest: E5B8A74431197F47FB56A581FAB8C1EE
 ShooterCommander\project.json: 1D02BC64BAC0D041019673A1C4C51737
-ShooterCommander\ShooterCommander.csproj: 386259B9ECB63286F1D20DA7298FB178
+ShooterCommander\ShooterCommander.csproj: 6932621082973622A98676B23AE38BBF
 ShooterCommander\ShooterCommander.csproj.user: BEFB8AC4886C4CFDD3C68445D6F19B04
 ShooterCommander\Assets\SplashScreen.scale-200.png: 60618416282ED104FD1473935716045D
 ShooterCommander\Assets\Square150x150Logo.scale-200.png: E02834B4A5DFB97FF8E212C1CACBB084
@@ -18,5 +18,5 @@ ShooterCommander\Assets\Square44x44Logo.scale-200.png: 6C6EF27184ABE9D870A9D5649
 ShooterCommander\Assets\Square44x44Logo.targetsize-24_altform-unplated.png: 156637F7B5363E983E7A46D8E533A23D
 ShooterCommander\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
 ShooterCommander\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
-ShooterCommander\Properties\AssemblyInfo.cs: 2502E01E4B3F42B862447C42F135755A
+ShooterCommander\Properties\AssemblyInfo.cs: modified
 ShooterCommander\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826

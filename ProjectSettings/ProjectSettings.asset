@@ -519,11 +519,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: ShooterCommander
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 800f36235a82d401
   metroApplicationDescription: ShooterCommander
   wsaImages: {}
   metroTileShortName: 
