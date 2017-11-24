@@ -3,23 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Aeroplane;
 
-public class PlayerController : MonoBehaviour {
-
-    AeroplaneController controller;
-
-
-    private void Awake()
+namespace KTB
+{
+    [RequireComponent(typeof(AeroplaneController))]
+    public class PlayerController : MonoBehaviour
     {
-        controller = GetComponent<AeroplaneController>();
-    }
 
-    void FixedUpdate()
-    {
-        var yow = Input.GetAxis("Horizontal2");
-        var pitch = Input.GetAxis("Vertical");
-        var roll = Input.GetAxis("Horizontal");
+        AeroplaneController m_Aeroplane;
 
-        // ロール, ピッチ, ヨー, スロットル, エアブレーキ
-        controller.Move(roll, pitch, yow, 1, false);
+        // these max angles are only used on mobile, due to the way pitch and roll input are handled
+        public float maxRollAngle = 80;
+        public float maxPitchAngle = 80;
+
+        private void Awake()
+        {
+            m_Aeroplane = GetComponent<AeroplaneController>();
+        }
+
+        void FixedUpdate()
+        {
+            var yow = Input.GetAxis("Horizontal2");
+            var pitch = Input.GetAxis("Vertical");
+            var roll = Input.GetAxis("Horizontal");
+            bool airBrakes = false; //CrossPlatformInputManager.GetButton("Fire1");
+            float throttle = airBrakes ? -1 : 1;
+#if MOBILE_INPUT
+            AdjustInputForMobileControls(ref roll, ref pitch, ref throttle);
+#endif
+            // ロール, ピッチ, ヨー, スロットル, エアブレーキ
+            m_Aeroplane.Move(roll, pitch, yow, throttle, airBrakes);
+        }
+
+        private void AdjustInputForMobileControls(ref float roll, ref float pitch, ref float throttle)
+        {
+            // because mobile tilt is used for roll and pitch, we help out by
+            // assuming that a centered level device means the user
+            // wants to fly straight and level!
+
+            // this means on mobile, the input represents the *desired* roll angle of the aeroplane,
+            // and the roll input is calculated to achieve that.
+            // whereas on non-mobile, the input directly controls the roll of the aeroplane.
+
+            float intendedRollAngle = roll * maxRollAngle * Mathf.Deg2Rad;
+            float intendedPitchAngle = pitch * maxPitchAngle * Mathf.Deg2Rad;
+            roll = Mathf.Clamp((intendedRollAngle - m_Aeroplane.RollAngle), -1, 1);
+            pitch = Mathf.Clamp((intendedPitchAngle - m_Aeroplane.PitchAngle), -1, 1);
+
+            // similarly, the throttle axis input is considered to be the desired absolute value, not a relative change to current throttle.
+            float intendedThrottle = throttle * 0.5f + 0.5f;
+            throttle = Mathf.Clamp(intendedThrottle - m_Aeroplane.Throttle, -1, 1);
+        }
     }
 }

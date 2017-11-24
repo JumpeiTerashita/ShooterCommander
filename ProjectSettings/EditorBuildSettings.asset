@@ -4,12 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-<<<<<<< HEAD
-    path: Assets/Terashita/Scenes/Shooting.unity
-    guid: b44502d580162a44a8050fdc21397150
-=======
-    path: Assets/Akagami/opening.unity
-    guid: 6a1dd594847a44f46b82087e65266478
->>>>>>> akagami
+  m_Scenes: []
