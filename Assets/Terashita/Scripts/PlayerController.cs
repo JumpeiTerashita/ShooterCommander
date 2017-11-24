@@ -11,27 +11,41 @@ namespace KTB
 
         AeroplaneController m_Aeroplane;
 
+        private bool isStarted;
+
         // these max angles are only used on mobile, due to the way pitch and roll input are handled
         public float maxRollAngle = 80;
         public float maxPitchAngle = 80;
 
         private void Awake()
         {
+            isStarted = false;
             m_Aeroplane = GetComponent<AeroplaneController>();
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
-            var yow = Input.GetAxis("Horizontal2");
-            var pitch = Input.GetAxis("Vertical");
-            var roll = Input.GetAxis("Horizontal");
-            bool airBrakes = false; //CrossPlatformInputManager.GetButton("Fire1");
-            float throttle = airBrakes ? -1 : 1;
+            if (!isStarted&&Input.GetButton("Accelerator"))
+            {
+                isStarted = true;
+                return;
+            }
+
+            if (isStarted)
+            {
+
+                var yow = Input.GetAxis("Horizontal2");
+                var pitch = Input.GetAxis("Vertical");
+                var roll = Input.GetAxis("Horizontal");
+                var airBrakes = Input.GetButton("Brake");
+
+                float throttle = airBrakes ? -1 : 1;
 #if MOBILE_INPUT
-            AdjustInputForMobileControls(ref roll, ref pitch, ref throttle);
+                AdjustInputForMobileControls(ref roll, ref pitch, ref throttle);
 #endif
-            // ロール, ピッチ, ヨー, スロットル, エアブレーキ
-            m_Aeroplane.Move(roll, pitch, yow, throttle, airBrakes);
+                // ロール, ピッチ, ヨー, スロットル, エアブレーキ
+                m_Aeroplane.Move(roll, pitch, yow, throttle, airBrakes);
+            }
         }
 
         private void AdjustInputForMobileControls(ref float roll, ref float pitch, ref float throttle)
