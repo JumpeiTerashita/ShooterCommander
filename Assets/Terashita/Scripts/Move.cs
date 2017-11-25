@@ -5,7 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     [SerializeField]
-    float speed = 1.0f;
+    float speed = 0.005f;
 
     // Use this for initialization
     void Start()
@@ -16,6 +16,6 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x + speed*Input.GetAxisRaw("Horizontal"),0,transform.position.z + speed*Input.GetAxisRaw("Vertical"));
+        transform.position = new Vector3(transform.position.x + speed*Input.GetAxisRaw("Horizontal"), transform.position.y + speed * Input.GetAxisRaw("Vertical2"), transform.position.z + speed*Input.GetAxisRaw("Vertical"));
     }
 }
