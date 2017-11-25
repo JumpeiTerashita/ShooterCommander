@@ -9,9 +9,10 @@ public class Scene_TerrainGeneration : MonoBehaviour {
 	void Start () {
         DontDestroyOnLoad(field);
 	}
+
     void Update()
     {
-
+       
         if (Input.GetKey(KeyCode.Joystick1Button0))
         {
             SceneManager.LoadScene("Opening");

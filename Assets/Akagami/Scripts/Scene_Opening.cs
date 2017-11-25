@@ -10,7 +10,6 @@ public class Scene_Opening : MonoBehaviour {
         Popup.Open2ButtonPop("シューターコマンダー", "テスト", "終了",
             () => SceneManager.LoadScene("Terashita/Scenes/Shooting"), 
             () => Application.Quit());
-        
 	}
 	
 }

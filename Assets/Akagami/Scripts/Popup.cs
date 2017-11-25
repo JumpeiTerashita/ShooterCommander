@@ -25,7 +25,7 @@ public class Popup : MonoBehaviour {
     // 本文とボタンの文章、ボタンが押された時の処理を引数に入れてください。
     public static void Open2ButtonPop(string _body, string _buttonStr1, string _buttonStr2, Action click1, Action click2)
     {
-
+       
         GameObject popupObj = Instantiate<GameObject>(Resources.Load<GameObject>("Popup2Button"));
         Popup popup = popupObj.GetComponent<Popup>();
 
