@@ -6,17 +6,11 @@ public class Scene_Opening : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //Popup.Open2ButtonPop("test", "test", "test", () => Debug.Log(1), () => Debug.Log(2));
 
-        Popup.Open3ButtonPop("シューターコマンダー", "テスト", "終了", "おわる",
+        Popup.Open2ButtonPop("シューターコマンダー", "テスト", "終了",
             () => SceneManager.LoadScene("Terashita/Scenes/Shooting"), 
-            () => Application.Quit(), 
             () => Application.Quit());
         
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -20,19 +20,21 @@ public class Popup : MonoBehaviour {
     Action click2;
     Action click3;
 
-    //public static void Open2ButtonPop(string _body, string _buttonStr1, string _buttonStr2, Action click1, Action click2)
-    //{
-    //    // GameObject popupPrefab = Resources.Load<GameObject>("PopupCanvas");
-    //    // Instantiate<GameObject>(popupPrefab);
-    //    GameObject popupObj = Instantiate<GameObject>(Resources.Load<GameObject>("PopupCanvas"));
-    //    Popup popup = popupObj.GetComponent<Popup>();
-   
-    //    popup.bodyText.text = _body;
-    //    popup.buttonText1.text = _buttonStr1;
-    //    popup.buttonText2.text = _buttonStr2;
-    //    popup.click1 = click1;
-    //    popup.click2 = click2;
-    //}
+
+    // Popupを動的に生成、表示する。
+    // 本文とボタンの文章、ボタンが押された時の処理を引数に入れてください。
+    public static void Open2ButtonPop(string _body, string _buttonStr1, string _buttonStr2, Action click1, Action click2)
+    {
+
+        GameObject popupObj = Instantiate<GameObject>(Resources.Load<GameObject>("Popup2Button"));
+        Popup popup = popupObj.GetComponent<Popup>();
+
+        popup.bodyText.text = _body;
+        popup.buttonText1.text = _buttonStr1;
+        popup.buttonText2.text = _buttonStr2;
+        popup.click1 = click1;
+        popup.click2 = click2;
+    }
 
 
     // Popupを動的に生成、表示する。
