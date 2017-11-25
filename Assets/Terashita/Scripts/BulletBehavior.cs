@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace KTB
 {
-    public class Move : MonoBehaviour
+    public class BulletBehavior : MonoBehaviour
     {
+        public Vector3 Destination;
+
         [SerializeField]
-        float speed = 0.005f;
+        float speed = 0.1f;
 
         // Use this for initialization
         void Start()
@@ -18,7 +20,7 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
-            transform.position = new Vector3(transform.position.x + speed * Input.GetAxisRaw("Horizontal"), transform.position.y + speed * Input.GetAxisRaw("Vertical2"), transform.position.z + speed * Input.GetAxisRaw("Vertical"));
+            transform.Translate(speed*Destination);
         }
     }
 }
