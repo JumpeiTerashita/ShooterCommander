@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 114523595458379060}
   - component: {fileID: 114680391816245166}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 114831698172858056}
   - component: {fileID: 114311402610526288}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114111237663082730}
   - component: {fileID: 114022214570478130}
   - component: {fileID: 114756865728413794}
+  - component: {fileID: 114756675611789666}
   m_Layer: 5
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -167,7 +168,7 @@ GameObject:
   - component: {fileID: 114179900400160350}
   - component: {fileID: 114476017592258060}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,6 +614,24 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114756675611789666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645253212863816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8642dfcfab4b67f48a99b0dc1026c085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCount: 2
+  pointerPosX: -0.5
+  selectPointObj: {fileID: 114111642946794834, guid: e436418fd964a58498a3c874be12119e,
+    type: 2}
+  button1: {fileID: 114476017592258060}
+  button2: {fileID: 114311402610526288}
+  button3: {fileID: 114680391816245166}
 --- !u!114 &114756865728413794
 MonoBehaviour:
   m_ObjectHideFlags: 1

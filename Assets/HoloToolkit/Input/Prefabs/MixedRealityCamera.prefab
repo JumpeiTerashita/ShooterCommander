@@ -436,7 +436,7 @@ MonoBehaviour:
   KeyboardXZRotationAxisControl: {fileID: 114635442116257526}
   KeyboardXYTranslationAxisControl: {fileID: 114803432351667480}
   KeyboardXZTranslationAxisControl: {fileID: 114708349752203296}
-  JoystickSupported: 1
+  JoystickSupported: 0
   JoystickXYRotationAxisControl: {fileID: 114851186469295980}
   JoystickXYTranslationAxisControl: {fileID: 114698292823166968}
   JoystickXZTranslationAxisControl: {fileID: 114745437897668886}
