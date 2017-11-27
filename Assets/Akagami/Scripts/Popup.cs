@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+
 // Popupを生成するクラス。
 // 実態には画面買いに出ないためにコライダーbillboard,tagalongが張り付いている
 public class Popup : MonoBehaviour {

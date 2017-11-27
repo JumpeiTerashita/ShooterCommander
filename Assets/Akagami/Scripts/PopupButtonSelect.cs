@@ -36,18 +36,18 @@ public class PopupButtonSelect : MonoBehaviour {
            ( Mathf.Sqrt(inputVertical * inputVertical) >= 1))
         {
             // 選択を変更
-            changeSelect(inputVertical);
+            ChangeSelect(inputVertical);
         }
         if (Input.GetButtonDown("Select_Button_A"))
         {
-            causeAction();
+            CauseAction();
         }
         // 現在の選択に変化を与える
-        selectButton();
+        SelectButton();
         beforeVertical = inputVertical;
 	}
     // 選択シーン切り替え関数
-    void changeSelect(float _inputVertical)
+    void ChangeSelect(float _inputVertical)
     {
         // Stick入力が上なら
         if (_inputVertical <= 0)
@@ -69,7 +69,7 @@ public class PopupButtonSelect : MonoBehaviour {
         }
     }
     // セレクトの数によって起こすアクションを分岐
-    void causeAction()
+    void CauseAction()
     {
         // スクリプトのオンクリックを取る
         if(select == 0)
@@ -87,7 +87,7 @@ public class PopupButtonSelect : MonoBehaviour {
     }
 
     // 選択しているボタンに変化を与えたい
-    void selectButton()
+    void SelectButton()
     {
         float yPos = 0;
         if(select == 0)
