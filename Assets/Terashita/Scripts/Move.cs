@@ -4,16 +4,13 @@ using UnityEngine;
 
 namespace KTB
 {
+    /// <summary>
+    /// キー入力を受け取って移動する　自機用
+    /// </summary>
     public class Move : MonoBehaviour
     {
         [SerializeField]
         float speed = 0.005f;
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
         void Update()

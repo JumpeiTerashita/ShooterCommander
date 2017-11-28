@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace KTB
 {
+    /// <summary>
+    /// 弾の持つ機能　今のところ
+    /// 1.移動
+    /// </summary>
     public class BulletBehavior : MonoBehaviour
     {
         public Vector3 Destination;
