@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace KTB
 {
+    /// <summary>
+    /// 自機の射撃機能 ... Playerにアタッチ
+    /// </summary>
     public class Shoot : MonoBehaviour
     {
         [SerializeField]
