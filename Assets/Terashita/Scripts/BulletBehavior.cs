@@ -26,5 +26,20 @@ namespace KTB
         {
             transform.Translate(speed*Destination);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                Debug.Log("HIT -- Enemy");
+                other.gameObject.SendMessage("Destroy");
+                Destroy();
+            }
+        }
+
+        void Destroy()
+        {
+            Destroy(gameObject);
+        }
     }
 }
