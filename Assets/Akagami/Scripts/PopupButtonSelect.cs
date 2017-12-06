@@ -4,28 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 public class PopupButtonSelect : MonoBehaviour {
+    float originScale;
     int select;
     float inputVertical;
     float beforeVertical;
     [SerializeField]
     int maxCount = 1;
     [SerializeField]
-    float pointerPosX = -0.5f;
-    [SerializeField]
-    Image selectPointObj;
-    [SerializeField]
     Button button1;
     [SerializeField]
     Button button2;
     [SerializeField]
     Button button3;
-
-	// Use this for initialization
+    
 	void Start () {
         select = 0;
-        selectPointObj = Instantiate(selectPointObj);
-        selectPointObj.transform.position = new Vector3(pointerPosX, 0, this.transform.position.z);
-        selectPointObj.transform.parent = this.transform;
+        originScale = button1.transform.localScale.x;
 	}
 
 	// Update is called once per frame
@@ -89,19 +83,35 @@ public class PopupButtonSelect : MonoBehaviour {
     // 選択しているボタンに変化を与えたい
     void SelectButton()
     {
-        float yPos = 0;
+        const float selectButtonMag = 1.2f;
+        // 一旦スケール値を元に戻す。
+        button1.transform.localScale =
+             new Vector3(originScale, originScale, originScale);
+        button2.transform.localScale =
+            new Vector3(originScale, originScale, originScale);
+        if (maxCount > 1)
+        {
+            button3.transform.localScale =
+                new Vector3(originScale, originScale, originScale);
+        }
+        // セレクトされてるボタンを拡大する。
         if(select == 0)
         {
-            yPos = button1.transform.position.y;
+            button1.transform.localScale =
+                new Vector3(originScale * selectButtonMag, originScale * selectButtonMag, originScale * selectButtonMag);
+            return;
         }
         else if(select == 1)
         {
-            yPos = button2.transform.position.y;
+            button2.transform.localScale =
+               new Vector3(originScale * selectButtonMag, originScale * selectButtonMag, originScale * selectButtonMag);
+            return;
         }
-        else if(select == 3)
+        else if(select == 2)
         {
-            yPos = button3.transform.position.y;
+            button3.transform.localScale =
+               new Vector3(originScale * selectButtonMag, originScale * selectButtonMag, originScale * selectButtonMag);
+            return;
         }
-        selectPointObj.transform.position = new Vector3(pointerPosX, yPos, this.transform.position.z);
     }
 }

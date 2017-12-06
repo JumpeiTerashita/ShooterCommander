@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Scene_Opening : MonoBehaviour {
-    
+
 	// Use this for initialization
 	void Start () {
-        Popup.Open2ButtonPop("シューターコマンダー", "テスト", "終了",
+        Popup.Open2ButtonPop("シューターコマンダー", "シューティング", "レース",
             () => SceneManager.LoadScene("Terashita/Scenes/Shooting"), 
-            () => Application.Quit());
-	}
-	
+            () => SceneManager.LoadScene("raceScene"));
+	}	
 }
