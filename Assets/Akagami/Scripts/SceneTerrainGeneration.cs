@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneTerrainGeneration : MonoBehaviour {
-    [SerializeField]
-    GameObject field;
-	// Use this for initialization
-	void Start () {
-        DontDestroyOnLoad(field);
-	}
-
-    void Update()
+namespace gami
+{
+    public class SceneTerrainGeneration : MonoBehaviour
     {
-       
-        if (Input.GetKey(KeyCode.Joystick1Button0))
+        [SerializeField]
+        GameObject field;
+        // Use this for initialization
+        void Start()
         {
-            SceneManager.LoadScene("Opening");
+            DontDestroyOnLoad(field);
+        }
+
+        void Update()
+        {
+
+            if (Input.GetKey(KeyCode.Joystick1Button0))
+            {
+                SceneManager.LoadScene("Opening");
+            }
         }
     }
 }

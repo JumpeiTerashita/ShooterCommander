@@ -1,43 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Timer : MonoBehaviour {
-
-    [SerializeField]
-    public float limitTime = 60;
-    public float timeCount = 0;
-
-    private void Start()
+namespace gami
+{
+    public class Timer : MonoBehaviour
     {
-        timeCount = 0;
-    }
 
-    private void Update()
-    {
-        timeCount += Time.deltaTime;
-    }
+        [SerializeField]
+        public float limitTime = 60;
+        public float timeCount = 0;
 
-    // 制限時間内であればtrueをかえす
-    public bool InLimitTime()
-    {
-        if (timeCount >= limitTime)
+        private void Start()
         {
-            return false;
+            timeCount = 0;
         }
-        else
+
+        private void Update()
         {
-            return true;
+            timeCount += Time.deltaTime;
         }
-    }
 
-    // 現在の残り時間を返す
-    public float GetTime()
-    {
-        return limitTime - timeCount;
-    }
+        // 制限時間内であればtrueをかえす
+        public bool InLimitTime()
+        {
+            if (timeCount >= limitTime)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
-    public void SetTime(float _time)
-    {
-        timeCount = _time;
+        // 現在の残り時間を返す
+        public float GetTime()
+        {
+            return limitTime - timeCount;
+        }
+
+        public void SetTime(float _time)
+        {
+            timeCount = _time;
+        }
     }
 }

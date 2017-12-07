@@ -406,7 +406,7 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player_Yaw
+    m_Name: Player_Roll
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -422,7 +422,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player_Roll
+    m_Name: Player_Yaw
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -442,7 +442,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 4
+    positiveButton: joystick button 5
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -458,7 +458,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 5
+    positiveButton: joystick button 4
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
