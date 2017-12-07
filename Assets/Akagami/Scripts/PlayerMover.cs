@@ -8,12 +8,21 @@ public class PlayerMover : MonoBehaviour {
     
     void RotateAction()
     {
-        if (Input.GetAxis("Player_Pitch") != 0)
+        float yStick = Input.GetAxis("Player_Pitch");
+        float xStick = Input.GetAxis("Player_Yaw");
+        if (yStick != 0)
         {
-            Debug.Log(1);
-            this.transform.Rotate(
-                0,0,0
-                );
+            this.transform.eulerAngles = new Vector3(
+                this.transform.localEulerAngles.x - yStick,
+                this.transform.eulerAngles.y,
+                this.transform.localEulerAngles.z);
+        }
+        if(xStick != 0)
+        {
+            this.transform.eulerAngles = new Vector3(
+                this.transform.localEulerAngles.x,
+                this.transform.eulerAngles.y + xStick,
+                this.transform.localEulerAngles.z);
         }
     }
 
@@ -24,9 +33,9 @@ public class PlayerMover : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ControllerEvent();
-        float x = this.transform.localEulerAngles.x * speed;
-        float y = this.transform.localEulerAngles.y * speed;
-        float z = this.transform.localEulerAngles.z * speed;
+        float x = this.transform.localEulerAngles.z * speed;
+        float y = this.transform.localEulerAngles.x * speed;
+        float z = this.transform.localEulerAngles.y * speed;
         this.GetComponent<Rigidbody>().AddForce(x, y, z);
     }
 }
