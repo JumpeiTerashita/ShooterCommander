@@ -10,23 +10,60 @@ namespace KTB
     public class Move : MonoBehaviour
     {
         [SerializeField]
-        float speed = 0.025f;
+        public float maxSpeed = 0.01f;
         [SerializeField]
-        float YawSpeed = 3.0f;
-
-        float LeftStick_Horizontal,LeftStick_Vertical, RightStick_Horizontal,RightStick_Vertical;
-
-        // Update is called once per frame
+        public float accel = 0.001f;
+        private float speed = 0;
+        void RotateAction()
+        {
+            float yStick = Input.GetAxis("Player_Pitch");
+            float xStick = Input.GetAxis("Player_Roll");
+            if (yStick != 0)
+            {
+                this.transform.rotation *=
+                    Quaternion.AngleAxis(-yStick, new Vector3(1, 0, 0));
+            }
+            if (xStick != 0)
+            {
+                this.transform.rotation *=
+                    Quaternion.AngleAxis(-xStick, new Vector3(0, 0, 1));
+            }
+        }
+        void AccelAction()
+        {
+            if (Input.GetButton("Player_Accel"))
+            {
+                if (speed >= maxSpeed) return;
+                speed += accel;
+                Debug.Log(speed);
+            }
+        }
+        void BrakeAction()
+        {
+            if (Input.GetButton("Player_Brake"))
+            {
+                if (speed <= 0)
+                {
+                    speed = 0;
+                    return;
+                }
+                speed *= 0.95f;
+            }
+        }
+        void ControllerEvent()
+        {
+            AccelAction();
+            BrakeAction();
+            RotateAction();
+        }
         void Update()
         {
-            LeftStick_Horizontal = Input.GetAxisRaw("Horizontal");
-            LeftStick_Vertical = Input.GetAxisRaw("Vertical");
-            RightStick_Horizontal = Input.GetAxisRaw("Horizontal2");
-            RightStick_Vertical = Input.GetAxisRaw("Vertical2");
+            ControllerEvent();
+            float x = Mathf.Cos(Mathf.Deg2Rad * (this.transform.localEulerAngles.y + 270) * -1) * speed;
+            float y = Mathf.Sin(Mathf.Deg2Rad * this.transform.localEulerAngles.x * -1) * speed;
+            float z = Mathf.Sin(Mathf.Deg2Rad * (this.transform.localEulerAngles.y + 270) * -1) * speed;
 
-            transform.Translate(speed * LeftStick_Horizontal,speed * RightStick_Vertical,speed * LeftStick_Vertical);
-            transform.Rotate(transform.up, YawSpeed*RightStick_Horizontal);
-            //transform.position = new Vector3(transform.position.x + speed * LeftStick_Horizontal, transform.position.y + speed * RightStick_Vertical, transform.position.z + speed * LeftStick_Vertical);
+            this.transform.position += new Vector3(x, y, z);
         }
     }
 }

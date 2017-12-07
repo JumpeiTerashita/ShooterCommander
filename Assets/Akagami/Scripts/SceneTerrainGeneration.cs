@@ -21,7 +21,7 @@ namespace gami
         void Update()
         {
 
-            if (Input.GetKey(KeyCode.Joystick1Button0))
+            if (Input.GetKey(KeyCode.Joystick1Button0)||Input.GetButtonDown("Select_Button_A"))
             {
                 field.GetComponent<HoloToolkit.Unity.SpatialMapping.SpatialMappingManager>().SurfaceMaterial = fieldMaterial;
                 SceneManager.LoadScene("Opening");
