@@ -32,7 +32,6 @@ namespace gami
             {
                 if (speed >= maxSpeed) return;
                 speed += accel;
-                Debug.Log(speed);
             }
         }
         void BrakeAction()
