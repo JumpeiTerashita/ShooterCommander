@@ -13,12 +13,16 @@ namespace gami
         private float speed = 0;
         void RotateAction()
         {
+            // Stick、Triggerに入力があれば値を保持
             float yStick = Input.GetAxis("Player_Pitch");
             float xStick = Input.GetAxis("Player_Roll");
             float trigger = Input.GetAxis("Player_Yaw");
+            // YawPitchRollの入力によって
+            // 現在の姿勢から値を変更していく
             if (yStick != 0)
             {
-               // yStick *= 2 - (speed / maxSpeed);
+                // 後々調節
+                // yStick *= 2 - (speed / maxSpeed);
                 this.transform.rotation *=
                     Quaternion.AngleAxis(-yStick, new Vector3(1, 0, 0));
             }
@@ -37,6 +41,10 @@ namespace gami
         {
             if (Input.GetButton("Player_Accel"))
             {
+                // スピードの最大値を決めるか、
+                // スピードをマイフレーム減速させるかは未定
+
+                // 該当する入力があればスピードを加算
                 if (speed >= maxSpeed) return;
                 speed += accel;
             }
@@ -53,6 +61,7 @@ namespace gami
                 speed *= 0.95f;
             }
         }
+        // 各アクションをコントローラーイベントに保持
         void ControllerEvent()
         {
             AccelAction();
@@ -62,10 +71,7 @@ namespace gami
         void Update()
         {
             ControllerEvent();
-            //float x = Mathf.Cos(Mathf.Deg2Rad * (this.transform.localEulerAngles.y + 270) * -1) * speed;
-            //float y = Mathf.Sin(Mathf.Deg2Rad * this.transform.localEulerAngles.x * -1) * speed;
-            //float z = Mathf.Sin(Mathf.Deg2Rad * (this.transform.localEulerAngles.y + 270) * -1) * speed;
-            //this.transform.position += new Vector3(x, y, z);
+            // 今現在向いている方向に進む
             this.transform.Translate(new Vector3(0, 0, speed));
         }
     }

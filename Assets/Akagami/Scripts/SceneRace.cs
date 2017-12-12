@@ -6,7 +6,7 @@ public class SceneRace : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        gami.Scoaler.initScore();
+        gami.ExternalFileLoader.LoadExternalFile("Akagami/CheckPointCreatePos.txt");
 	}
 	
 	// Update is called once per frame

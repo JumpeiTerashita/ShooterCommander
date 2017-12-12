@@ -23,6 +23,7 @@ namespace gami
         void Start()
         {
             select = 0;
+            // 最初のスケールを保持
             originScale = button1.transform.localScale.x;
         }
 
@@ -99,6 +100,7 @@ namespace gami
                 button3.transform.localScale =
                     new Vector3(originScale, originScale, originScale);
             }
+
             // セレクトされてるボタンを拡大する。
             if (select == 0)
             {

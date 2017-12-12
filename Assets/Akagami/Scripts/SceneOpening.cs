@@ -13,7 +13,6 @@ namespace gami
             Popup.Open2ButtonPop("シューターコマンダー", "シューティング", "レース",
                 () => SceneManager.LoadScene("Terashita/Scenes/Shooting"),
                 () => SceneManager.LoadScene("raceScene"));
-            Scoaler.initScore();
         }
     }
 }

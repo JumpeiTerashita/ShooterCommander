@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace gami
 {
-    public static class Scoaler
+    public class Scoaler
     {
-        public static float score = 0;
-        public static void plusScore(float _plusCount)
+        private float score = 0;
+        Scoaler()
+        {
+            score = 0;
+        }
+        ~Scoaler()
+        {
+
+        }
+        public void plusScore(float _plusCount)
         {
             score += _plusCount;
         }
-        public static float getScore()
+        public float getScore()
         {
             return score;
-        }
-        public static void initScore()
-        {
-            score = 0;
         }
     }
 }

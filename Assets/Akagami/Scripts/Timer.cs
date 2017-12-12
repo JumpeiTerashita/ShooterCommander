@@ -12,11 +12,13 @@ namespace gami
 
         private void Start()
         {
+            // 生成時にカウンターを0に
             timeCount = 0;
         }
 
         private void Update()
         {
+            // マイフレーム秒数を加算
             timeCount += Time.deltaTime;
         }
 
@@ -38,10 +40,15 @@ namespace gami
         {
             return limitTime - timeCount;
         }
-
+        // カウンターを引数の値に変更
         public void SetTime(float _time)
         {
             timeCount = _time;
+        }
+        // 制限時間を引数の値に変更 
+        public void SetLimit(float _limit)
+        {
+            limitTime = _limit;
         }
     }
 }
