@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BehaviorPattern: 1
   Speed: 0.005
+  Bullet: {fileID: 1670784669400306, guid: c8357ecf1382e094fa605f032c8af138, type: 2}
 --- !u!136 &136596627616204464
 CapsuleCollider:
   m_ObjectHideFlags: 1

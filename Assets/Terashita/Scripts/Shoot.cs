@@ -17,13 +17,6 @@ namespace KTB
         [SerializeField]
         GameObject Bullet;
 
-        GameObject Player;
-        // Use this for initialization
-        void Start()
-        {
-            Player = this.gameObject;
-        }
-
         // Update is called once per frame
         void Update()
         {
@@ -31,12 +24,9 @@ namespace KTB
             {
                 //Debug.Log("Fire");
                 GameObject InstBullet = Instantiate(Bullet);
-                InstBullet.transform.position = Player.transform.position + Player.transform.forward * BulletInstLength;
-
-               
-                
+                InstBullet.transform.position = this.transform.position + this.transform.forward * BulletInstLength;
                 //  プレイヤーの向いている方向に飛ぶ
-                InstBullet.GetComponent<BulletBehavior>().Destination = Player.transform.forward;
+                InstBullet.GetComponent<BulletBehavior>().Destination = this.transform.forward;
             }
             
         }
