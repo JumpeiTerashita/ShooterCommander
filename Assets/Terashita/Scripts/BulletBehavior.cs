@@ -29,6 +29,13 @@ namespace KTB
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.tag == "Player")
+            {
+                Debug.Log("HIT -- Player");
+                other.gameObject.SendMessage("Destroy");
+                Destroy();
+            }
+
             if (other.gameObject.tag == "Enemy")
             {
                 Debug.Log("HIT -- Enemy");
