@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e6059f38909674b8dfe19bb1fb108f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPos: {x: 1, y: 1, z: 1}
+  TargetPos: {x: 0, y: 0, z: 1}
 --- !u!114 &114537428151477492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,7 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6afbedbfbd3c4e4b95d798e78f2dcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.01
+  BehaviorPattern: 1
+  Speed: 0.005
 --- !u!136 &136596627616204464
 CapsuleCollider:
   m_ObjectHideFlags: 1

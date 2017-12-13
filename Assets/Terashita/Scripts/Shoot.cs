@@ -9,6 +9,11 @@ namespace KTB
     /// </summary>
     public class Shoot : MonoBehaviour
     {
+        //  弾を自機からどんくらい前に出すか
+        //  0.25fくらいがちょうどよい
+        [SerializeField]
+        float BulletInstLength = 0.25f;
+
         [SerializeField]
         GameObject Bullet;
 
@@ -26,8 +31,10 @@ namespace KTB
             {
                 //Debug.Log("Fire");
                 GameObject InstBullet = Instantiate(Bullet);
-                InstBullet.transform.position = Player.transform.position;
-            
+                InstBullet.transform.position = Player.transform.position + Player.transform.forward * BulletInstLength;
+
+               
+                
                 //  プレイヤーの向いている方向に飛ぶ
                 InstBullet.GetComponent<BulletBehavior>().Destination = Player.transform.forward;
             }
