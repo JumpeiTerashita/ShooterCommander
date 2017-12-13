@@ -13,7 +13,7 @@ namespace KTB
         public Vector3 Destination;
 
         [SerializeField]
-        float speed = 0.1f;
+        public float speed = 0.1f;
 
         // Use this for initialization
         void Start()

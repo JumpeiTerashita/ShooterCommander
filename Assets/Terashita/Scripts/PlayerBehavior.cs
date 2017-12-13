@@ -4,9 +4,13 @@ using UnityEngine;
 
 namespace KTB
 {
+    [RequireComponent(typeof(CapsuleCollider))]
     public class PlayerBehavior : MonoBehaviour
     {
-        static Vector3 PlayerPos;
+        
+
+        [SerializeField]
+        MeshRenderer PlayerMesh;
 
         // Use this for initialization
         void Start()
@@ -17,12 +21,14 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
-            PlayerPos = transform.position;
+
         }
 
         void Destroy()
         {
-            Destroy(gameObject);
+            PlayerMesh.enabled = false;
+            this.GetComponent<CapsuleCollider>().enabled = false;
+            //gameObject.SetActive(false);
         }
 
     }

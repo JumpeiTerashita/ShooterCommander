@@ -22,7 +22,6 @@ namespace KTB
         IEnumerator Reset()
         {
             yield return new WaitForSeconds(ResetSec);
-            Debug.Log(gameObject.GetComponent<Rigidbody>().velocity);
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             StartCoroutine(Reset());
