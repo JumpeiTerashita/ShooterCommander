@@ -60,7 +60,7 @@ namespace gami
             //    arrow.transform.position.x - this.transform.position.x);
 
             //arrow.transform.LookAt(this.transform);
-            arrow.transform.
+            //arrow.transform.
         }
     }
 }
