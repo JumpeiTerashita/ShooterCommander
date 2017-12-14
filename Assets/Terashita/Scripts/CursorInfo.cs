@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CursorInfo : MonoBehaviour {
 
-    Vector3 CursorPos;
+    static Vector3 CursorPos;
 
 	// Use this for initialization
 	void Start () {
@@ -14,5 +14,10 @@ public class CursorInfo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CursorPos = transform.position;
+    }
+
+    static public Vector3 GetCursorPos()
+    {
+        return CursorPos;
     }
 }

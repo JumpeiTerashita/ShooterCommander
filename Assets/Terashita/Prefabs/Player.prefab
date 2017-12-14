@@ -185,6 +185,8 @@ GameObject:
   - component: {fileID: 114776338819814198}
   - component: {fileID: 114009989516463764}
   - component: {fileID: 96230325609951216}
+  - component: {fileID: 114249896314809400}
+  - component: {fileID: 114962886282274030}
   m_Layer: 0
   m_Name: Player
   m_TagString: Enemy
@@ -2169,6 +2171,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResetSec: 1
+--- !u!114 &114249896314809400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322493986319392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df708a190052cc4d90884a938974771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArriveLength: 0.25
+  SpeedMagnitude: 4
 --- !u!114 &114664156675398432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2180,7 +2195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb32a8f51b513254fb1da3ed16f7214b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.025
+  maxSpeed: 0.1
   accel: 0.00025
 --- !u!114 &114776338819814198
 MonoBehaviour:
@@ -2193,6 +2208,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9a4403e29f13847b677c84fad36ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114962886282274030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322493986319392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e6059f38909674b8dfe19bb1fb108f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetPos: {x: 0, y: 0, z: 0}
 --- !u!124 &124626960104959954
 Behaviour:
   m_ObjectHideFlags: 1

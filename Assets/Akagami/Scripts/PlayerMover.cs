@@ -89,6 +89,18 @@ namespace gami
                 this.transform.Translate(new Vector3(0, 0, speed));
             }
         }
+
+        // AutoPilot時の速度取得 by KTB
+        public float GetMaxSpeed()
+        {
+            return maxSpeed;
+        }
+
+        // AutoPilot終了時の速度変更 by KTB
+        public void SetSpeed(float _speed)
+        {
+            speed = _speed;
+        }
     }
 
 }
