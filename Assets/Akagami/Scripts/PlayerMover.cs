@@ -6,11 +6,23 @@ namespace gami
 
     public class PlayerMover : MonoBehaviour
     {
+        
+
         [SerializeField]
         public float maxSpeed = 0.01f;
         [SerializeField]
         public float accel = 0.001f;
         private float speed = 0;
+
+        // 自動操縦フラグ by KTB
+        // オンなら操縦できないように
+        static public bool IsAutoPilot;
+
+        private void Start()
+        {
+            IsAutoPilot = false;
+        }
+
         void RotateAction()
         {
             // Stick、Triggerに入力があれば値を保持
@@ -70,9 +82,12 @@ namespace gami
         }
         void Update()
         {
-            ControllerEvent();
-            // 今現在向いている方向に進む
-            this.transform.Translate(new Vector3(0, 0, speed));
+            if (!IsAutoPilot)
+            {
+                ControllerEvent();
+                // 今現在向いている方向に進む
+                this.transform.Translate(new Vector3(0, 0, speed));
+            }
         }
     }
 
