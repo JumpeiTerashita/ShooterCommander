@@ -4,14 +4,10 @@ using UnityEngine;
 
 namespace KTB
 {
-    [RequireComponent(typeof(CapsuleCollider))]
+   
     public class PlayerBehavior : MonoBehaviour
     {
-        
-
-        [SerializeField]
-        MeshRenderer PlayerMesh;
-
+       
         // Use this for initialization
         void Start()
         {
@@ -26,8 +22,8 @@ namespace KTB
 
         void Destroy()
         {
-            PlayerMesh.enabled = false;
-            this.GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<SkinnedMeshRenderer>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
             //gameObject.SetActive(false);
         }
 
