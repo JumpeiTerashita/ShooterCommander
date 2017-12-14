@@ -10,17 +10,18 @@ namespace gami
         [SerializeField]
         public GameObject arrow;
 
-        //メインカメラに付いているタグ名
+        [SerializeField]
+        public Camera mainCamera;
+
+        // メインカメラに付いているタグ名
         private const string MAIN_CAMERA_TAG_NAME = "MainCamera";
 
-        //カメラに表示されているか
+        // カメラに表示されているか
         private bool _isRendered = false;
-        //private void Start()
-        //{
-            
-        //}
+
         private void Update()
         {
+
             // 画面内フラグが立っていたら
             if (_isRendered)
             {
@@ -38,7 +39,7 @@ namespace gami
             if (arrow.activeInHierarchy == true)
             {
                 // 位置を調整
-                SetCursorPos();
+                SetCursorRotation();
             }
         }
         //カメラに映ってる間に呼ばれる
@@ -52,15 +53,11 @@ namespace gami
             }
 
         }
-        // カーソル位置、角度をプレイヤーの方向へ移動させる
-        private void SetCursorPos()
+        // カーソルの回転値を調整
+        private void SetCursorRotation()
         {
-            //float look = Mathf.Atan2(
-            //    arrow.transform.position.z - this.transform.position.z,
-            //    arrow.transform.position.x - this.transform.position.x);
-
-            //arrow.transform.LookAt(this.transform);
-            //arrow.transform.
+            // Playerの位置へ向く
+            arrow.transform.LookAt(this.transform);
         }
     }
 }
