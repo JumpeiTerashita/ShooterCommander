@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4088100554141904}
+  - component: {fileID: 114971249587305606}
   m_Layer: 0
   m_Name: arrowCursor
   m_TagString: Untagged
@@ -51,7 +52,7 @@ Transform:
   m_GameObject: {fileID: 1589444386651752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 4971901281842088}
   m_Father: {fileID: 0}
@@ -109,3 +110,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541211857695824}
   m_Mesh: {fileID: 4300000, guid: 017029e9baa709c4db0c41c6190c0d49, type: 3}
+--- !u!114 &114971249587305606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589444386651752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d677fb09489e7d439180400e67ac8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtTarget: {fileID: 0}
