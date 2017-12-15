@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrianglesPerCubicMeter: 50
-  TimeBetweenUpdates: 3.5
+  TimeBetweenUpdates: 0.5
   observerVolumeType: 1
   extents: {x: 20, y: 20, z: 20}
   origin: {x: 0, y: 0, z: 0}
