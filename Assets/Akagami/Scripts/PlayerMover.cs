@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace gami
 {
+#if WINDOWS_UWP
+    using Windows.Gaming.Input;
+#endif
+
 
     public class PlayerMover : MonoBehaviour
     {
-        
-
+#if WINDOWS_UWP
+        public Gamepad controller;
+#endif
         [SerializeField]
         public float maxSpeed = 0.01f;
         [SerializeField]
@@ -20,6 +25,11 @@ namespace gami
 
         private void Start()
         {
+#if WINDOWS_UWP
+            // GamePadを探して追加
+            // controller = Gamepad.Gamepads.First();
+            Gamepad.GamepadAdded += Gamepad_GamepadAdded;
+#endif
             IsAutoPilot = false;
         }
 
@@ -101,6 +111,14 @@ namespace gami
         {
             speed = _speed;
         }
+
+#if WINDOWS_UWP
+        // ゲームパッド追加時のイベント処理
+        private void Gamepad_GamepadAdded(object sender, Gamepad e)
+        {
+            controller = e;
+        }
+#endif
     }
 
 }
