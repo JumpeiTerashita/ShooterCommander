@@ -15,6 +15,11 @@ public class AutoDestroy : MonoBehaviour {
         StartCoroutine(Destroy());
 	}
 
+    public void SetDestroyLimit(float _DestroyLimit)
+    {
+        DestroyLimit = _DestroyLimit;
+    }
+
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(DestroyLimit);
