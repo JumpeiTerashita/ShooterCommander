@@ -6,23 +6,29 @@ using UnityEngine;
 /// <summary>
 /// アタッチされたGameObjectは自壊する。
 /// </summary>
-public class AutoDestroy : MonoBehaviour {
 
-    [SerializeField]
-    float DestroyLimit = 1.0f;
-	// Use this for initialization
-	void Start () {
-        StartCoroutine(Destroy());
-	}
-
-    public void SetDestroyLimit(float _DestroyLimit)
+namespace KTB
+{
+    public class AutoDestroy : MonoBehaviour
     {
-        DestroyLimit = _DestroyLimit;
-    }
 
-    IEnumerator Destroy()
-    {
-        yield return new WaitForSeconds(DestroyLimit);
-        Destroy(this.gameObject);
+        [SerializeField]
+        float DestroyLimit = 1.0f;
+        // Use this for initialization
+        void Start()
+        {
+            StartCoroutine(Destroy());
+        }
+
+        public void SetDestroyLimit(float _DestroyLimit)
+        {
+            DestroyLimit = _DestroyLimit;
+        }
+
+        IEnumerator Destroy()
+        {
+            yield return new WaitForSeconds(DestroyLimit);
+            Destroy(this.gameObject);
+        }
     }
 }
