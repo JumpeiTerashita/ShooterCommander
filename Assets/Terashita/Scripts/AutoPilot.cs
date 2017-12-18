@@ -27,10 +27,7 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
-            
-            //  TODO 自動操縦ボタンのInputSetting
-            //  とりあえずBボタン
-            if (Input.GetButtonDown("Fire2")&&!gami.PlayerMover.IsAutoPilot)
+            if (Input.GetButtonDown("AutoPilot")&&!gami.PlayerMover.IsAutoPilot)
             {
                 Debug.Log("AutoPilot enabled");
                 gami.PlayerMover.IsAutoPilot = true;

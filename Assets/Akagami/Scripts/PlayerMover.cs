@@ -15,6 +15,19 @@ namespace gami
 #endif
         [SerializeField]
         public float maxSpeed = 0.01f;
+
+        // ギア定速 by KTB
+        // REVIEW maxSpeedから計算するべき…？
+        [SerializeField]
+        public float[] GearSpeed = new float[5] 
+        {
+            0,
+            0.005f,
+            0.01f,
+            0.05f,
+            0.1f
+        };
+        
         [SerializeField]
         public float accel = 0.001f;
         private float speed = 0;
@@ -23,6 +36,8 @@ namespace gami
         // オンなら操縦できないように
         static public bool IsAutoPilot;
 
+        private int NowGear;
+
         private void Start()
         {
 #if WINDOWS_UWP
@@ -30,6 +45,7 @@ namespace gami
             // controller = Gamepad.Gamepads.First();
             Gamepad.GamepadAdded += Gamepad_GamepadAdded;
 #endif
+            NowGear = 1;
             IsAutoPilot = false;
         }
 
@@ -59,6 +75,18 @@ namespace gami
                     Quaternion.AngleAxis(-trigger, new Vector3(0, 1, 0));
             }
         }
+        void GearChangeAction()
+        {
+            if (Input.GetButtonDown("GearUp") && (NowGear < 4))   NowGear++; 
+            if (Input.GetButtonDown("GearDown") && (NowGear > 0)) NowGear--;
+            Debug.Log(NowGear);
+        }
+        void GearAutoAccelAction()
+        {
+            if (speed > GearSpeed[NowGear]) { speed *= 0.95f; return; }
+            speed += accel;
+        }
+
         void AccelAction()
         {
             if (Input.GetButton("Player_Accel"))
@@ -73,7 +101,8 @@ namespace gami
         }
         void BrakeAction()
         {
-            if (Input.GetButton("Player_Brake"))
+            //if (Input.GetButton("Player_Brake"))
+            if(Input.GetButton("Brake"))
             {
                 if (speed <= 0)
                 {
@@ -86,7 +115,9 @@ namespace gami
         // 各アクションをコントローラーイベントに保持
         void ControllerEvent()
         {
-            AccelAction();
+            GearChangeAction();
+            GearAutoAccelAction();
+            //AccelAction();
             BrakeAction();
             RotateAction();
         }

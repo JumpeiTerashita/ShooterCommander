@@ -2216,6 +2216,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0.1
+  GearSpeed:
+  - 0
+  - 0.005
+  - 0.01
+  - 0.05
+  - 0.1
   accel: 0.00025
 --- !u!114 &114776338819814198
 MonoBehaviour:

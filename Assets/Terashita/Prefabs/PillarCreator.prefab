@@ -52,5 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EveryPillarLifeLimit: 5
-  PillarUnderLimit: 0
+  PillarTopLimit: 5
+  PillarUnderLimit: -5
   Pillar: {fileID: 1303580699146738, guid: ac41b9dc0593f0c4d92619ef404faf6a, type: 2}
