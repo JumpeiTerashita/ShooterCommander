@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if WINDOWS_UWP
+using Windows.Gaming.Input;
+#endif
 namespace KTB
 {
+
     public class PillarCreator : MonoBehaviour
     {
+#if WINDOWS_UWP
+        public Gamepad controller;
+        public GamepadReading reading;
+#endif
+
         [SerializeField]
         float EveryPillarLifeLimit = 1.0f;
 
@@ -34,13 +42,24 @@ namespace KTB
         {
             PillarLimit = PillarUnderLimit;
             IsSideUnder = true;
+
         }
 
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetButtonDown("Attack_SideChange"))
+            bool sideChange = false;
+#if WINDOWS_UWP
+            reading = controller.GetCurrentReading();
+            if(reading.Buttons.HasFlag(GamepadButtons.Y))
+            {
+                sideChange = true;
+            }
+#else
+            if (Input.GetButtonDown("Attack_SideChange")) sideChange = true;
+#endif
+                if (sideChange)
             {
                 if (IsSideUnder)
                 {

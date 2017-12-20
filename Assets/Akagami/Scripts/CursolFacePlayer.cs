@@ -12,6 +12,8 @@ namespace gami
         public GameObject lookAtTarget;
         // 非アクティブの際に外部からアクセスするための変数
         private static GameObject arrow;
+
+        private const float LENGTH = 2;
         private void Start()
         {
             // 自信を保持
@@ -20,6 +22,16 @@ namespace gami
         private void Update()
         {
             SetCursorRotation();
+            SetCursorPos();
+        }
+        // カーソルの位置調整
+        private void SetCursorPos()
+        {
+            this.transform.position =
+                new Vector3(
+                    Mathf.Cos((this.transform.parent.eulerAngles.y + 90) * Mathf.Deg2Rad) * LENGTH,
+                    Mathf.Sin((this.transform.parent.eulerAngles.x) * Mathf.Deg2Rad) * LENGTH,
+                    Mathf.Sin((this.transform.parent.eulerAngles.y + 90) * Mathf.Deg2Rad) * LENGTH);
         }
         // カーソルの回転値を調整
         private void SetCursorRotation()

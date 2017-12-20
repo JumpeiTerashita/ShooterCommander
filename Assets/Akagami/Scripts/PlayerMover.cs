@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace gami
-{
 #if WINDOWS_UWP
-    using Windows.Gaming.Input;
+using Windows.Gaming.Input;
 #endif
 
-
+namespace gami
+{
+// コピペ用消さないで
+//#if WINDOWS_UWP
+//#else
+//#endif
     public class PlayerMover : MonoBehaviour
     {
 #if WINDOWS_UWP
         public Gamepad controller;
+        public GamepadReading reading;
+        public GamepadReading oldButton;
 #endif
         [SerializeField]
         public float maxSpeed = 0.01f;
@@ -31,30 +36,60 @@ namespace gami
         [SerializeField]
         public float accel = 0.001f;
         private float speed = 0;
-
+        private const float NARROW_SPEED = 0.95f;
         // 自動操縦フラグ by KTB
         // オンなら操縦できないように
         static public bool IsAutoPilot;
 
         private int NowGear;
 
+
+
         private void Start()
         {
 #if WINDOWS_UWP
-            // GamePadを探して追加
-            // controller = Gamepad.Gamepads.First();
-            Gamepad.GamepadAdded += Gamepad_GamepadAdded;
+        // Gamepadを探す
+        if(Gamepad.Gamepads.Count > 0) {
+            //Debug.Log("Gamepad found.");
+            //controller = Gamepad.Gamepads.First();
+        } else
+        {
+            Debug.Log("Gamepad not found.");
+        }
+        // ゲームパッド追加時イベント処理を追加
+        Gamepad.GamepadAdded += Gamepad_GamepadAdded;
 #endif
+
             NowGear = 1;
             IsAutoPilot = false;
         }
 
         void RotateAction()
         {
+
+            float yStick = 0;
+            float xStick = 0;
+            float trigger = 0;
+#if WINDOWS_UWP
+        if(controller != null)
+        {
+
+            // ゲームパッドの現在の状態を取得する
+            xStick = (float)reading.LeftThumbstickX;
+            yStick = (float)reading.LeftThumbstickY * -1;
+            // 死に値を設定
+            if((xStick<=0.1f)&&(xStick>=-0.1f))xStick=0;
+            if((yStick<=0.1f)&&(yStick>=-0.1f))yStick=0;
+            trigger += (float)reading.LeftTrigger;
+            trigger -= (float)reading.RightTrigger;
+        }
+#else
             // Stick、Triggerに入力があれば値を保持
-            float yStick = Input.GetAxis("Player_Pitch");
-            float xStick = Input.GetAxis("Player_Roll");
-            float trigger = Input.GetAxis("Player_Yaw");
+            yStick = Input.GetAxis("Player_Pitch");
+            xStick = Input.GetAxis("Player_Roll");
+            trigger = Input.GetAxis("Player_Yaw");
+#endif
+
             // YawPitchRollの入力によって
             // 現在の姿勢から値を変更していく
             if (yStick != 0)
@@ -77,13 +112,36 @@ namespace gami
         }
         void GearChangeAction()
         {
-            if (Input.GetButtonDown("GearUp") && (NowGear < 4))   NowGear++; 
-            if (Input.GetButtonDown("GearDown") && (NowGear > 0)) NowGear--;
-            Debug.Log(NowGear);
+            // L1とR1でギアチェンジ
+            bool gearUp = false;
+            bool gearDown = false;
+
+#if WINDOWS_UWP
+            // ボタンが押されているかつ前回の入力と異なればFlagをtrueに
+            if(controller != null)
+            {
+                if(reading.Buttons.HasFlag(GamepadButtons.RightShoulder)&&
+                (reading.Buttons.HasFlag(GamepadButtons.RightShoulder)!=oldButton.Buttons.HasFlag(GamepadButtons.RightShoulder)))
+                {
+                    gearUp = true;
+                }
+                if(reading.Buttons.HasFlag(GamepadButtons.LeftShoulder)&&
+                reading.Buttons.HasFlag(GamepadButtons.LeftShoulder)!=oldButton.Buttons.HasFlag(GamepadButtons.LeftShoulder))
+                {
+                    gearDown = true;
+                }
+            }
+#else
+            if (Input.GetButtonDown("GearUp")) gearUp = true;
+            if (Input.GetButtonDown("GearDown")) gearDown = true;
+#endif
+            if (gearUp && (NowGear < 4)) NowGear++;
+            if (gearDown && (NowGear > 0)) NowGear--;
+            
         }
         void GearAutoAccelAction()
         {
-            if (speed > GearSpeed[NowGear]) { speed *= 0.95f; return; }
+            if (speed > GearSpeed[NowGear]) { speed *= NARROW_SPEED; return; }
             speed += accel;
         }
 
@@ -101,15 +159,27 @@ namespace gami
         }
         void BrakeAction()
         {
-            //if (Input.GetButton("Player_Brake"))
-            if(Input.GetButton("Brake"))
+            bool brake = false;
+            // Aボタン！！！！！！
+#if WINDOWS_UWP
+            if(controller != null)
+            {
+                if(reading.Buttons.HasFlag(GamepadButtons.A))brake = true;
+            }
+#else
+            if (Input.GetButton("Brake"))
+            {
+                brake = true;
+            }
+#endif
+            if (brake)
             {
                 if (speed <= 0)
                 {
                     speed = 0;
                     return;
                 }
-                speed *= 0.95f;
+                speed *= NARROW_SPEED;
             }
         }
         // 各アクションをコントローラーイベントに保持
@@ -123,6 +193,13 @@ namespace gami
         }
         void Update()
         {
+#if WINDOWS_UWP
+            if(controller != null)
+            {
+                oldButton = reading;
+                reading = controller.GetCurrentReading();
+            }
+#endif
             if (!IsAutoPilot)
             {
                 ControllerEvent();

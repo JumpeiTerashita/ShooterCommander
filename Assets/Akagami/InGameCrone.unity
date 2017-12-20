@@ -472,7 +472,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 882780360}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d1eae2854a91f4387cd1a35b1966df, type: 3}
   m_Name: 
@@ -594,7 +594,7 @@ Prefab:
     - target: {fileID: 114249896314809400, guid: fd72e8904aaa6eb41bf099d717b5d4b8,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1322493986319392, guid: fd72e8904aaa6eb41bf099d717b5d4b8, type: 2}
       propertyPath: m_IsActive
@@ -605,7 +605,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114644432132194688, guid: fd72e8904aaa6eb41bf099d717b5d4b8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fd72e8904aaa6eb41bf099d717b5d4b8, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1064958653
@@ -853,6 +854,11 @@ Prefab:
     - target: {fileID: 1372541880982678, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
       propertyPath: m_TagString
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 20770519707920992, guid: d29bc40b7f3df26479d6a0aac211c355,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}

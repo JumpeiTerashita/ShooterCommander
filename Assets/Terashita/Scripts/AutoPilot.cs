@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+#if WINDOWS_UWP
+using Windows.Gaming.Input;
+#endif
 namespace KTB
 {
     public class AutoPilot : MonoBehaviour
     {
+#if WINDOWS_UWP
+        public Gamepad controller;
+        public GamepadReading reading;
+#endif
+        
         [SerializeField]
         float ArriveLength = 0.25f;
 
@@ -21,13 +28,34 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
-           
+#if WINDOWS_UWP
+            // Gamepadを探す
+        if(Gamepad.Gamepads.Count > 0) {
+            //Debug.Log("Gamepad found.");
+            //controller = Gamepad.Gamepads.First();
+        } else
+        {
+            Debug.Log("Gamepad not found.");
+        }
+        // ゲームパッド追加時イベント処理を追加
+        //Gamepad.GamepadAdded += Gamepad_GamepadAdded;
+#endif
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetButtonDown("AutoPilot")&&!gami.PlayerMover.IsAutoPilot)
+            bool autoPilot = false;
+#if WINDOWS_UWP
+            if(controller != null)
+            {
+                reading = controller.GetCurrentReading();
+                if(reading.Buttons.HasFlag(GamepadButtons.Menu))autoPilot = true;
+            }
+#else
+            if (Input.GetButtonDown("AutoPilot")) autoPilot = true;
+#endif
+            if (autoPilot&&!gami.PlayerMover.IsAutoPilot)
             {
                 Debug.Log("AutoPilot enabled");
                 gami.PlayerMover.IsAutoPilot = true;
