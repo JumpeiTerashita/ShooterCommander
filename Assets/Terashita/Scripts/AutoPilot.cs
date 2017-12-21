@@ -50,7 +50,7 @@ namespace KTB
             if(controller != null)
             {
                 reading = controller.GetCurrentReading();
-                if(reading.Buttons.HasFlag(GamepadButtons.Menu))autoPilot = true;
+                if(reading.Buttons.HasFlag(GamepadButtons.X))autoPilot = true;
             }
 #else
             if (Input.GetButtonDown("AutoPilot")) autoPilot = true;
