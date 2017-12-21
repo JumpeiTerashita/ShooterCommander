@@ -22,20 +22,24 @@ namespace gami
         private void Update()
         {
             SetCursorRotation();
-            SetCursorPos();
+           // SetCursorPos();
         }
         // カーソルの位置調整
         private void SetCursorPos()
         {
-            this.transform.position =
-                new Vector3(
-                    Mathf.Cos((this.transform.parent.eulerAngles.y + 90) * Mathf.Deg2Rad) * LENGTH,
-                    Mathf.Sin((this.transform.parent.eulerAngles.x) * Mathf.Deg2Rad) * LENGTH,
-                    Mathf.Sin((this.transform.parent.eulerAngles.y + 90) * Mathf.Deg2Rad) * LENGTH);
+            if(lookAtTarget == null)
+            {
+                return;
+            }
+            
         }
         // カーソルの回転値を調整
         private void SetCursorRotation()
         {
+            if(lookAtTarget == null)
+            {
+                return;
+            }
             // Playerの位置へ向く
             this.transform.LookAt(lookAtTarget.transform);
         }
