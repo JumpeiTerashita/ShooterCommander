@@ -717,10 +717,14 @@ Prefab:
       propertyPath: lookAtTarget
       value: 
       objectReference: {fileID: 882780360}
-    - target: {fileID: 82488804916786202, guid: d29bc40b7f3df26479d6a0aac211c355,
+    - target: {fileID: 1957050096546662, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114391416336366174, guid: d29bc40b7f3df26479d6a0aac211c355,
         type: 2}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
