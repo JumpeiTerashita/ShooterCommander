@@ -97,7 +97,7 @@ namespace KTB
             InstPillar.transform.localScale = new Vector3(InstPillar.transform.localScale.x, PlayerPos.y - PillarLimit, InstPillar.transform.localScale.z);
 
             //  柱の位置セット
-            // 長さ÷2
+            // 長さ÷2 中点にy座標をおく
             InstPillar.transform.position = new Vector3(PlayerPos.x, PlayerPos.y - (PlayerPos.y - PillarLimit) / 2, PlayerPos.z);
 
             InstPillar.transform.SetParent(this.gameObject.transform);
