@@ -46,10 +46,12 @@ namespace gami
 
         public static void ChangeActiveIsTrue()
         {
+            if (arrow == null) return;
             arrow.gameObject.SetActive(true);
         }
         public static void ChangeActiveIsFalse()
         {
+            if (arrow == null) return;
             arrow.gameObject.SetActive(false);
         }
     }
