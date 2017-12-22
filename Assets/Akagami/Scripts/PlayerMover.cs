@@ -43,6 +43,7 @@ namespace gami
 
         private int NowGear;
 
+        public bool isControll = false;
 
 
         private void Start()
@@ -186,7 +187,6 @@ namespace gami
         void ControllerEvent()
         {
             GearChangeAction();
-            GearAutoAccelAction();
             //AccelAction();
             BrakeAction();
             RotateAction();
@@ -203,6 +203,7 @@ namespace gami
             if (!IsAutoPilot)
             {
                 ControllerEvent();
+                GearAutoAccelAction();
                 // 今現在向いている方向に進む
                 this.transform.Translate(new Vector3(0, 0, speed));
             }
@@ -219,7 +220,16 @@ namespace gami
         {
             speed = _speed;
         }
-
+        // 外部からギアを変えられるようにします。
+        public void SetGear(int _gear)
+        {
+            NowGear = _gear;
+        }
+        // 外部からコントローラー操作を変えられるように
+        public void SetControllerFlag(bool _flag)
+        {
+            isControll = _flag;
+        }
 #if WINDOWS_UWP
         // ゲームパッド追加時のイベント処理
         private void Gamepad_GamepadAdded(object sender, Gamepad e)
